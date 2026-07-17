@@ -1,0 +1,37 @@
+# Save this file as: .github/workflows/digest.yml in your repo
+
+name: content-digest
+
+on:
+  schedule:
+    - cron: '0 9 */3 * *'   # every 3 days at 9am UTC
+  workflow_dispatch: {}      # lets you trigger it manually from the Actions tab
+
+jobs:
+  run-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          DIGEST_TO: ${{ secrets.DIGEST_TO }}
+        run: python digest.py
+
+      - name: Commit latest digest to repo
+        run: |
+          git config user.name "digest-bot"
+          git config user.email "digest-bot@users.noreply.github.com"
+          git add digest_latest.md || true
+          git commit -m "Update digest $(date -u +%Y-%m-%d)" || echo "Nothing to commit"
+          git push
