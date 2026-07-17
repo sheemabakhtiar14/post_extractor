@@ -109,8 +109,10 @@ def collect_entries():
             print(f"[warn] could not parse feed for {source_name}: {url}")
             continue
 
+        kept = 0
         for entry in parsed.entries:
             if is_recent(entry, cutoff) and is_relevant(entry):
+                kept += 1
                 collected.append(
                     {
                         "source": source_name,
@@ -119,6 +121,10 @@ def collect_entries():
                         "summary": entry.get("summary", "")[:500],
                     }
                 )
+        print(
+            f"[info] {source_name}: {len(parsed.entries)} fetched, "
+            f"{kept} kept after filters"
+        )
 
     return collected
 

@@ -6,10 +6,11 @@ Edit this file to control which sources get pulled and what counts as
 # --- FEEDS ---------------------------------------------------------------
 # Reddit RSS is native and free: https://www.reddit.com/r/<subreddit>/.rss
 #
-# X topic search (not accounts): RSSHub keyword feeds
-#   https://rsshub.app/twitter/keyword/<topic>
-# Public RSSHub often rate-limits or needs auth for X — treat as best-effort.
-# More reliable alternative: create keyword/search feeds on rss.app and paste URLs here.
+# X topic search: public RSSHub keyword feeds are currently broken (404).
+# To get X topic coverage, create search feeds on https://rss.app :
+#   1. Create feed → paste an X search URL, e.g.
+#        https://x.com/search?q=agentic%20OR%20%22AI%20agents%22&f=live
+#   2. Copy the generated RSS URL into FEEDS below (replace the placeholders).
 #
 # Add/remove entries freely. Key = label shown in the digest, value = RSS URL.
 
@@ -19,14 +20,9 @@ FEEDS = {
     "r/MachineLearning": "https://www.reddit.com/r/MachineLearning/.rss",
     "r/ExperiencedDevs": "https://www.reddit.com/r/ExperiencedDevs/.rss",
 
-    # X — topic keyword search (not specific accounts)
-    "x:agentic": "https://rsshub.app/twitter/keyword/agentic",
-    "x:AI agents": "https://rsshub.app/twitter/keyword/AI%20agents",
-    "x:agentic workflows": "https://rsshub.app/twitter/keyword/agentic%20workflows",
-    "x:multi-agent": "https://rsshub.app/twitter/keyword/multi-agent",
-    "x:MCP": "https://rsshub.app/twitter/keyword/MCP",
-    "x:LLM infra": "https://rsshub.app/twitter/keyword/LLM%20infrastructure",
-    "x:backend systems": "https://rsshub.app/twitter/keyword/backend%20systems",
+    # X — topic search via rss.app
+    "x:LLM infra/serving": "https://rss.app/feeds/IxhdYZp2PG0zT99e.xml",
+    "x:distributed systems": "https://rss.app/feeds/JJeBllQRg3jgTsKl.xml",
 }
 
 # --- KEYWORDS --------------------------------------------------------------
