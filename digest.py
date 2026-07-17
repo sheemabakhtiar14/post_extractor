@@ -32,7 +32,8 @@ from config import FEEDS, KEYWORDS, LOOKBACK_DAYS
 
 OPENROUTER_API_KEY = os.environ["OPENROUTER_API_KEY"].strip()
 SMTP_USER = os.environ["SMTP_USER"].strip()
-SMTP_PASS = os.environ["SMTP_PASS"].strip()
+# Gmail app passwords are often copied with spaces ("abcd efgh ijkl mnop").
+SMTP_PASS = os.environ["SMTP_PASS"].strip().replace(" ", "")
 DIGEST_TO = os.environ["DIGEST_TO"].strip()
 
 # Routes to whichever free OpenRouter model is available.
