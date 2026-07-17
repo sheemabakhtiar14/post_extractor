@@ -14,6 +14,8 @@ jobs:
       contents: write   # needed so the job can push digest_latest.md
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -30,12 +32,37 @@ jobs:
           DIGEST_TO: ${{ secrets.DIGEST_TO }}
         run: python digest.py
 
+      # Email already succeeded above. This only archives digest_latest.md in the repo.
       - name: Commit latest digest to repo
         run: |
           git config user.name "digest-bot"
           git config user.email "digest-bot@users.noreply.github.com"
-          git pull --rebase origin main || true
-          git add digest_latest.md || true
-          git commit -m "Update digest $(date -u +%Y-%m-%d)" || echo "Nothing to commit"
-          git pull --rebase origin main || true
-          git push
+
+          if [ ! -f digest_latest.md ]; then
+            echo "No digest_latest.md to commit"
+            exit 0
+          fi
+
+          git add digest_latest.md
+          if git diff --staged --quiet; then
+            echo "digest_latest.md unchanged; nothing to commit"
+            exit 0
+          fi
+
+          git commit -m "Update digest $(date -u +%Y-%m-%d)"
+
+          # Retry rebase+push in case main moved (e.g. you pushed during the run)
+          for i in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              echo "Pushed digest_latest.md"
+              exit 0
+            fi
+            echo "Push rejected (attempt $i); retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep 3
+          done
+
+          echo "Could not push digest_latest.md after retries (email was still sent)"
+          exit 0
