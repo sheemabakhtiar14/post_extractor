@@ -54,12 +54,11 @@ jobs:
           # Retry rebase+push in case main moved (e.g. you pushed during the run)
           for i in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main
-            if git push origin HEAD:main; then
+            if git rebase -X theirs origin/main && git push origin HEAD:main; then
               echo "Pushed digest_latest.md"
               exit 0
             fi
-            echo "Push rejected (attempt $i); retrying..."
+            echo "Push/rebase failed (attempt $i); retrying..."
             git rebase --abort 2>/dev/null || true
             sleep 3
           done
