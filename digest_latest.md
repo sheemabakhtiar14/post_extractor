@@ -1,25 +1,31 @@
-# Agentic/Backend Digest — 2026-07-17
+# Agentic/Backend Digest — 2026-07-19
 
+**Top picks**
+- Netflix’s in-house LLM serving writeup (Triton wrapper, full stack) — production infra lessons. https://x.com/m_rasu/status/2078643215780225284
+- LMCache for KV-cache reuse: up to 10.7x prefill speedup, 3–10x on AMD MI300X. https://x.com/rohanpaul_ai/status/2077853724555534509
+- Thinking Machines’ Tinker result actually used Qwen3-235B; base model choice scrutinized via benchmarks. https://www.reddit.com/r/LocalLLaMA/comments/1v0ka8g/
+- Aurora DSQL paper: minimize coordination as core latency-reduction principle. https://x.com/karthikkalyan90/status/2078740157759672643
+- LLM harness tool to catch cache invalidation in calls. https://www.reddit.com/r/LocalLLaMA/comments/1uztipo/
 
+**LLM serving / infra**
+- Cache hit rate optimization flagged as underrated lever; providers discount cached tokens heavily. https://x.com/saen_dev/status/2078744875466457118
+- Stateful routing replacing stateless L7 LB in AI hot path for GPU efficiency. https://x.com/shubh6200/status/2078366054925881502
+- Mini-SGLang: 5k-line Python inference framework demystifying serving optimizations. https://x.com/the_osps/status/2078435617898442832
+- Position-independent caching (HYPIC) for hybrid-attention RAG/agent serving. https://x.com/locox_fun/status/2077718968455078041
+- Multi-provider failover harness open-sourced by Metriqual. https://x.com/its_vayishu/status/2078098851593093444
 
-### **Top Picks**  
-1. **Bonsai 27B runs locally on an iPhone (3.9GB)** – Demonstrates extreme efficiency in running a 27B model locally, challenging hardware limits.  
-   [Link](https://www.reddit.com/r/LocalLLaMA/comments/1uyz9n2/bonsai_27b_runs_locally_on_an_iphone_a_27b_model/)  
-2. **Trellis.cpp improves asset generation quality** – Highlights advancements in generating high-quality outputs via GPU acceleration.  
-   [Link](https://www.reddit.com/r/LocalLLaMA/comments/1uyw64s/trelliscpp_now_produces_high_quality_assets/)  
-3. **EU AI Act OpenRAG: Structured legal compliance dataset** – A novel, legally structured corpus for RAG systems, enabling granular regulatory analysis.  
-   [Link](https://www.reddit.com/r/MachineLearning/comments/1uytlac/eu_ai_act_openrag_933_legally_structured_chunks/)  
-4. **LMCache: Reduces redundant prefill in LLM serving (10.7x speedup)** – Addresses latency waste by reusing KV caches, critical for multi-provider reliability.  
-   [Twitter](https://x.com/rohanpaul_ai/status/2077853724555534509)  
-5. **Qlora 2e-4 default rate issue for small datasets** – Exposes a common pitfall in quantized fine-tuning, urging context-aware hyperparameter tuning.  
-   [Link](https://www.reddit.com/r/MachineLearning/comments/1uy1z8b/the_qlora_2e4_default_is_wrong_under_10k_samples/)  
+**Backend / distributed systems**
+- Backend architect 2026 skill list: microservices, CAP, event sourcing, CQRS. https://x.com/SumitM_X/status/2078720127227576753
+- Uber-at-scale design notes: H3 indexing, Kafka event architecture. https://x.com/Anupkpal9650/status/2078435701780361248
+- Production-focused engineering knowledge base repo published. https://x.com/aos_tsx/status/2078585579701518815
+- r/ExperiencedDevs: practical NestJS rate-limiting for external API with soft 20 req/s limit. https://www.reddit.com/r/ExperiencedDevs/comments/1uy3m06/
 
----
+**Agent frameworks / local models**
+- ASCIITermDraw Bench: tests VLMs generating/editing ASCII. https://www.reddit.com/r/LocalLLaMA/comments/1v0ltno/
+- Qwen 3.6 vs Gemma 4 local: prompt adherence/coherence observations. https://www.reddit.com/r/LocalLLaMA/comments/1v0dksm/
+- Fine-tuning ternary Bonsai 8b on Apple metal. https://www.reddit.com/r/LocalLLaMA/comments/1v0egoi/
+- Basalt Labs scam: fake 99.44% HLE claim, Qwen2.5-7B under hood. https://www.reddit.com/r/LocalLLaMA/comments/1uztylz/
 
-### **Agent Frameworks**  
-- **RTCA @ NeurIPS 2026 Workshop** – Focuses on real-time multimodal conversational agents, pushing boundaries in agent autonomy.  
-  [Link](https://www.reddit.com/r/MachineLearning/comments/1uy8e0v/cfp_rtca_neurips_2026_r/)  
-- **Kimi K3 release** – Positions Kimi-3 (2.8T) as a premium open-source model, competing with closed-source giants.  
-  [Link](https://www.reddit.com/r/LocalLLaMA/comments/1uy3a0q/kimi_k3_released_on_web_and_app/)  
-
-
+**Misc**
+- r/ExperiencedDevs: joy in SWE when LLMs handle implementation. https://www.reddit.com/r/ExperiencedDevs/comments/1uzfvrq/
+- Full local movie gen on M5 Max (flux/wan/ltx/piper). https://www.reddit.com/r/LocalLLaMA/comments/1v0ibu2/
