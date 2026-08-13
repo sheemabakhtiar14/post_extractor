@@ -1,36 +1,33 @@
-# Agentic/Backend Digest — 2026-08-07
+# Agentic/Backend Digest — 2026-08-13
 
-**Top picks**
-
-1. **C++ vLLM port** – 66 MiB binary, no Python at inference, token-for-token parity with vLLM.  
-2. **NVIDIA NeMo-Speech.cpp** – Full ASR/TTS/codec stack quantized to GGUF, fully on-device.  
-3. **Monodratic** – Sparse causal attention via learned product-hash routing; claims efficiency gains.  
+**Top Picks**  
+1. **NVIDIA RTX PRO 6000 Blackwell**: Price surge to $16K post-pre-order discounts, impacting local LLM hardware costs. [Reddit](https://www.reddit.com/r/LocalLLaMA/comments/1vn0dn0/nvidia_doubles_rtx_pro_6000_blackwells_msrp_to_a/)  
+2. **DeepSeek V4 Flash 284B Performance**: Faster generation via DSpark, RAM outperforming VRAM on 96GB RTX 6000. [Reddit](https://www.reddit.com/r/LocalLLaMA/comments/1vmt1y3/i_ran_deepseek_v4_flash_284b_dspark_on_one_rtx/)  
+3. **Semi-Edge Inference Idea**: Proposal to split model inference between edge devices and servers to reduce cloud costs. [Reddit](https://www.reddit.com/r/MachineLearning/comments/1vkhl99/semi_edge_inference_idea_d/)  
 
 ---
 
-**Agents & Frameworks**  
-- **Qwen 3.8 Max tops agentic index**, beating Opus 5 per Artificial Analysis. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhd416/qwen_38_max_now_ranked_as_best_overall_model/)  
-- **Criticism of AA's weighting changes** after open-source lead, suggesting bias via metric tuning. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhoyw1/my_issue_with_artificial_analysiss_intelligence/)  
+## **Agent Frameworks**  
+- **DeepSeek-V4-Flash + Muse-Glimmer Pipeline**: Demonstrated vision-enabling for agents using LLMs. [Reddit](https://www.reddit.com/r/LocalLLaMA/comments/1vn2smj/i_asked_deepseekv4flash_to_work_with_museglimmer/)  
+- **Chessformer Ablation Study**: Removing attention heads disrupts strategic reasoning (e.g., queen sacrifice). [r/MachineLearning](https://www.reddit.com/r/MachineLearning/comments/1vmvl4w/chessformer_lens_demo_ablating_1_of_a_chess/)  
 
-**Backend/Infra**  
-- **AMD acquires Taalas**, aiming to scale AI inference compute, possibly eyeing modular chip designs. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhrdo3/amd_acquires_taalas_to_advance_compute_solutions/)  
-- **Dual 3090 setup hits 1600 pp/t** on Qwen 3.6 27B with `--split-mode tensor`. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhkln6/dual_3090_setup_400_pp_ts_to_1600_pp_ts_on_qwen/)  
+---
 
-**LLM Serving**  
-- **vLLM ported to C++20**, tiny binary, verified output match—potential edge deployment win. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vh9lx4/i_ported_vllms_serving_stack_to_c20_66_mib_binary/)  
-- **Echo Dot 2 runs 28M LLM** locally with usable speed—low-cost inference hack. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhocl8/echo_dot_2_can_run_28m_llm_at_decent_speed/)  
+## **Backend/Infra**  
+- **Fru Random Forest**: Rust-based optimized implementation with Python/R bindings. [arXiv preprint](https://doi.org/10.1016/j.softx.2026.102918)  
+- **Semi-Edge Inference**: Cost-saving hybrid model splitting between edge/client and server. [Reddit](https://www.reddit.com/r/MachineLearning/comments/1vkhl99/semi_edge_inference_idea_d/)  
 
-**Speech/NLP Tooling**  
-- **NeMo-Speech.cpp enables local ASR+TTS+codec**, all GGUF quantized. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhjeqy/nvidias_whole_speech_stack_just_went_local_asr/)  
-- **Nemotron 3.5 ASR powers Pi voice extension**, CPU-realtime STT. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhvblg/i_made_a_simple_local_voice_input_extension_for/)  
+---
 
-**Research Trends**  
-- **Bad Apple compressed into 3MB NN**, SIREN-based method revisited. [Link](https://www.reddit.com/r/MachineLearning/comments/1vfrco1/i_compressed_bad_apple_into_a_3mb_neural_network_p/)  
-- **Debate: Can LLM traces become deterministic pipelines?** Examines automation trade-offs. [Link](https://www.reddit.com/r/MachineLearning/comments/1vhapso/can_recurring_llm_traces_be_synthesized_into/)  
-- **LLMs may level research playing field**—boosts output for small teams sans mentorship. [Link](https://www.reddit.com/r/MachineLearning/comments/1vgh075/do_llms_make_ml_research_more_fair_for_small/)  
+## **LLM Serving**  
+- **Local LLM Benchmarks**: DeepSeek V4 Flash 284B achieves 768K context via DSpark on RTX 6000 VRAM. [Reddit](https://www.reddit.com/r/LocalLLaMA/comments/1vmt1y3/i_ran_deepseek_v4_flash_284b_dspark_on_one_rtx/)  
+- **CODEX/LLM Developer Experience**: Proposed 4-step approval process for AI-generated code changes. [Reddit](https://www.reddit.com/r/ExperiencedDevs/comments/1vmhqib/would_you_approve_this_change_without_reading_the/)  
 
-**Hardware**  
-- **Custom quad 7900 XTX watercool build**, 96GB VRAM for heavy inference. [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vhs70b/custom_water_cooled_quad_7900_xtx_build_96_gb_vram/)  
+---
 
-**Misc**  
-- **Supermarket sells preloaded LLMs**—marketing or real trend? [Link](https://www.reddit.com/r/LocalLLaMA/comments/1vgj0h8/you_can_now_buy_llms_at_your_local_supermarket/)
+## **Misc**  
+- **Hidden Reasoning in Closed LLMs**: Paper reveals full token traces for Claude/GPT reasoning, aiding open-source auditing. [arXiv](https://arxiv.org/pdf/2608.09867)  
+- **AI-Driven Addiction**: Developers report burnout from constant AI-assisted context switching. [Reddit](https://www.reddit.com/r/ExperiencedDevs/comments/1vmfijr/addiction_like_sympthoms_from_ai/)  
+
+(498 words)
+
