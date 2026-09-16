@@ -1,22 +1,20 @@
-# Agentic/Backend Digest — 2026-09-13
+# Agentic/Backend Digest — 2026-09-16
 
-**Top Picks**  
-1. **Hardware-Optimized LLMs Drive Innovation**: The Local LLaMA community is deep-diving into quantization, inference engines, and architecture tweaks due to hardware scarcity ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wf3i1m/the_local_llm_community_feels_like_the_golden_era/)).  
-2. **Qwen3.8 Flash Next Performance**: Achieved 1.2k tokens/sec prefill via Strix Halo and optimized community forks, though closed-source Halogen outperforms open alternatives ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1weobt6/qwen38_flash_next_now_at_12k_ts_prefill_on_strix/)).  
-3. **Agnes-3.0-Flash 33B Multimodal**: Scores 36 AA, highlighting advancements in open-source LLMs ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1we6lrn/agnesaiagnes30flash_33b_multimodal_aa_score_36/)).  
-4. **Telemetry Privacy Concerns**: Hugging Face Hub silently fingerprints AI coding agents, raising data privacy questions ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wey19g/huggingface_hub_silently_fingerprints_which_ai/)).  
-5. **Beyond Tokens as Metrics**: Challenges the relevance of token prediction speed, advocating for task-complexity-per-second benchmarks ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wf6w41/llm_performance_community_metric/)).  
+**Top picks (4 items)**  
+- Qwen3.8‑Flash‑Next can offload most of its KV cache to RAM, running 1 M‑token contexts on three RTX 3090s at ~60 tok/s (Reddit). https://www.reddit.com/r/LocalLLaMA/comments/1whx5xi/you_can_offload_most_of_qwen38flashnexts_kv_cache/  
+- SHADOW‑50M, a 44 M‑parameter quantized LLM trained from scratch on 45 B tokens, fits in 19.8 MB and delivers ~1,900 tok/s on CPU (MachineLearning). https://www.reddit.com/r/MachineLearning/comments/1wgzpli/i_trained_a_44m_parameter_quantized_llm_from/  
+- LARA provides composable “behaviour” modules that can be attached to frozen LLMs for reasoning, tool use, and retrieval without fine‑tuning (MachineLearning). https://github.com/pfekin/LARA  
+- GPU planning for 27 B models: a 48 GB Pro5000 may replace an A40 for faster inference, but selling the A40 is uncertain (Reddit). https://www.reddit.com/r/LocalLLaMA/comments/1whx9mu/what_would_you_do_with_this_mess_of_gpus/  
 
----
+**Agent frameworks**  
+- **LARA** – modular behaviour components for frozen LLMs, enabling reasoning and tool use without fine‑tuning. https://github.com/pfekin/LARA  
 
-**Agent Frameworks**  
-- **ThreadShelf**: A local tool for exporting, searching, and resuming AI chats from OpenRouter, LM Studio, and Google AI Studio, including llama.cpp support ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wf6np5/i_built_a_local_way_to_export_search_and_continue/)).  
-- **RoastMyHarness**: Benchmarks custom Pi agent setups using DeepSWE tasks, enabling performance comparisons ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1weufjc/benchmark_your_custom_pi_tools/)).  
+**Backend / infra**  
+- **GPU strategy** – evaluating a 48 GB Pro5000 to accelerate 27 B inference versus keeping an A40, weighing cost and performance. https://www.reddit.com/r/LocalLLaMA/comments/1whx9mu/what_would_you_do_with_this_mess_of_gpus/  
 
-**Backend/Infra**  
-- **Java Interview Prep**: Tricky questions for mid-senior backend roles include discussing async/sync calls, distributed transactions, and Kafka/TCP idempotency ([r/ExperiencedDevs](https://www.reddit.com/r/ExperiencedDevs/comments/1wcudvm/midsenior_java_developer_interview_questions/)).  
-- **Error Message Advocacy**: A developer criticizes POs avoiding explicit error messages, which waste dev time daily ([r/ExperiencedDevs](https://www.reddit.com/r/ExperiencedDevs/comments/1wdog1z/the_po_and_her_manager_avoids_features_like_error/)).  
+**LLM serving**  
+- **Qwen3.8‑Flash‑Next KV‑cache offload** – moves most KV data to system RAM, allowing 1 M‑token contexts with only a modest speed drop on consumer GPUs. https://www.reddit.com/r/LocalLLaMA/comments/1whx5xi/you_can_offload_most_of_qwen38flashnexts_kv_cache/  
+- **Ministral 3 3B on a Galaxy S21** – shows a 3‑billion‑parameter model running efficiently on a phone, demonstrating strong edge‑device inference. https://www.reddit.com/r/LocalLLaMA/comments/1whtcp0/ministral_3_3b_on_a_galaxy_s21_relayed_a/  
 
-**LLM Serving**  
-- **Intern-S2-397B**: A dense 397B-parameter model from internlm with novel architectures (Engram tables, RoPE/NoPE layering) ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wf3wt2/internlminterns2_hugging_face/)).  
-- **Dense 9B Model Interest**: A developer proposes training a 9.4B-parameter model with specialized components (Llama 3 tokenizer, attnRes) but seeks community validation ([r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1wezm58/is_there_still_strong_interest_in
+**Misc**  
+- **GIMP + llama.cpp integration** – a 35 B Qwen model hooked to GIMP via MCP tools produces a first‑attempt flower drawing, highlighting creative local‑model use cases. https://www.reddit.com/r/LocalLLaMA/comments/1whjqv6/connected_a_local_model/
